@@ -19,26 +19,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inconsolata.className}>
-      <body className='bg-gray-600 w-screen h-screen'>
-        <MantineProvider withGlobalStyles withNormalizeCSS
-          theme={{
-            components: {
-              Container: {
-                defaultProps: {
-                  sizes: {
-                    xs: 540,
-                    sm: 720,
-                    md: 960,
-                    lg: 1140,
-                    xl: 1320,
-                    xxl: 1500
-                  },
-                },
-              },
-            },
-          }}>
-          {children}
-        </MantineProvider>
+      <body className='bg-black-700 '>
+        {children}
       </body>
     </html>
   )

@@ -8,3 +8,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+input[type='text']:focus ~ .input-text {
+@apply text-blue-500 transform -translate-y-10 -translate-x-2 scale-75
+}
