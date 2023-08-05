@@ -17,7 +17,8 @@ module.exports = {
         'gray-800': '#202024',
         'gray-900': '#121214',
         'black-700': '#08040c',
-        'button-color': '#00676C'
+        'button-color': '#00676C',
+        'green': '#00676C'
       },
       width: {
         '93.75': '93.75rem',
@@ -25,6 +26,6 @@ module.exports = {
     },
   },
   plugins: [
-
+    require('tailwindcss-animated')
   ],
 }

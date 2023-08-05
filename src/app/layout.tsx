@@ -2,10 +2,9 @@
 
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inconsolata } from 'next/font/google'
-import { MantineProvider } from '@mantine/core'
+import { Inconsolata, Poppins, Roboto } from 'next/font/google'
 
-const inconsolata = Inconsolata({ subsets: ['latin'], weight: ['300', '400', '500', '700'] })
+const inconsolata = Roboto({ subsets: ['latin'], weight: ['300', '400', '500', '700'] })
 
 export const metadata: Metadata = {
   title: 'Mama.AI',
@@ -19,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inconsolata.className}>
-      <body className='bg-black-700 '>
+      <body className='animate-fade-right animate-once animate-normal bg-black-700 '>
         {children}
       </body>
     </html>

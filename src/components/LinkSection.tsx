@@ -2,14 +2,16 @@ import { Input } from "@mantine/core"
 
 export const LinkSection = () => {
   return (
-    <section className='flex '>
-      <Input.Wrapper
+    <section className='flex flex-col animate-fade text-white '>
+      <label >
+        Link adress
+      </label>
+      <Input.Wrapper className="text-white"
         id="input-demo"
-        withAsterisk
-        label="link adress"
         description="Please enter with link that you want to translate"
         error="link not found"
-        size="xl"
+        size="sm"
+
       >
         <Input id="input-demo" placeholder="Your link" />
       </Input.Wrapper>
