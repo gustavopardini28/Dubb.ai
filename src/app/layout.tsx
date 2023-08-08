@@ -4,7 +4,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inconsolata, Poppins, Roboto } from 'next/font/google'
 
-const inconsolata = Roboto({ subsets: ['latin'], weight: ['300', '400', '500', '700'] })
+const roboto = Roboto({ subsets: ['latin'], weight: ['300', '400', '500', '700'] })
 
 export const metadata: Metadata = {
   title: 'Mama.AI',
@@ -17,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={inconsolata.className}>
+    <html lang="en" className={roboto.className}>
       <body className='animate-fade-right animate-once animate-normal bg-black-700 '>
         {children}
       </body>
