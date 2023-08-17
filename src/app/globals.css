@@ -12,3 +12,24 @@
 input[type='text']:focus ~ .input-text {
 @apply text-blue-500 transform -translate-y-10 -translate-x-2 scale-75
 }
+
+.line-1{
+    border-right: 2px solid rgba(255,255,255,.75);
+    font-size: 180%;
+    white-space: pre;
+    overflow-x: hidden;
+}
+
+/* Animation */
+.anim-typewriter{
+  animation: typewriter 1s  1s 1 normal both,
+             blinkTextCursor 500ms  infinite normal;
+}
+@keyframes typewriter{
+  from{width: 0;}
+  to{width: 100%; }
+}
+@keyframes blinkTextCursor{
+  from{border-right-color: rgba(255,255,255,.75);}
+  to{border-right-color: transparent;}
+}

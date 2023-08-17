@@ -1,30 +1,46 @@
-import { api } from "@/lib/axios";
-import { createContext, ReactNode } from "react";
+import { api } from "../lib/axios";
+import { createContext, ReactNode, useState } from "react";
 
 interface InputProviderProps {
   children: ReactNode;
 }
 
 interface inputContextType {
-  sendInputLink: (input: string, from: string, to: string) => Promise<void>;
+  sendInputLink: (link: string, from: string, to: string) => Promise<void>;
+  response: string;
+  loading: boolean;
 }
 
 
 export const InputContext = createContext({} as inputContextType);
 
-export function inputProvider({ children }: InputProviderProps) {
+export function InputProvider({ children }: InputProviderProps) {
+  const [response, setResponse] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
 
-  async function sendInputLink(input: string, to: string, from: string) {
-    const response = await api.post('https://5000-mamaai-dubb-5x8rr7fi4tv.ws-us102.gitpod.io', {
-      input,
+
+  async function sendInputLink(from: string, to: string, link: string) {
+    setLoading(true);
+
+    const apiResponse = await api.post('https://5000-mamaai-dubb-ed3zs5g9qj0.ws-us103.gitpod.io/translate', {
       from,
-      to
+      to,
+      link
+    }).catch(err => {
+      alert(err.message);
+    }).finally(() => {
+      setLoading(false)
     })
+
+    setResponse(apiResponse.data.text);
+
   }
 
   return (
     <InputContext.Provider value={{
-      sendInputLink
+      sendInputLink,
+      response,
+      loading
     }}>
       {children}
     </InputContext.Provider>

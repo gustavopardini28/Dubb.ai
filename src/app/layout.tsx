@@ -2,7 +2,8 @@
 
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inconsolata, Poppins, Roboto } from 'next/font/google'
+import { Roboto } from 'next/font/google'
+import { InputProvider } from '@/contexts/inputContext'
 
 const roboto = Roboto({ subsets: ['latin'], weight: ['300', '400', '500', '700'] })
 
@@ -18,8 +19,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={roboto.className}>
-      <body className='animate-fade-right animate-once animate-normal bg-black-700 '>
-        {children}
+      <body className='animate-fade-right animate-once animate-normal bg-black-700 overflow-hidden '>
+        <InputProvider>
+          {children}
+        </InputProvider>
       </body>
     </html>
   )
