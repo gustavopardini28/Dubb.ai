@@ -22,7 +22,7 @@ export function InputProvider({ children }: InputProviderProps) {
   async function sendInputLink(from: string, to: string, link: string) {
     setLoading(true);
 
-    const apiResponse = await api.post('https://5000-mamaai-dubb-ed3zs5g9qj0.ws-us103.gitpod.io/translate', {
+    const apiResponse = await api.post('translate', {
       from,
       to,
       link
