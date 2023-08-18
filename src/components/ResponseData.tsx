@@ -7,19 +7,29 @@ import Typewriter from 'typewriter-effect';
 import { Files } from 'lucide-react';
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import { Button } from "./Button";
+import { useLength } from "@/hooks/useLength";
+import { api } from "@/lib/axios";
 
 
 
 export const ResponseData = () => {
+
+  const from = 'pt';
+  const to = 'en'
+
   const { response } = useContext(InputContext);
+  const speed = useLength();
 
   const [finishedTyping, setFinishedTyping] = useState<boolean>(false);
   const [renderAudioButton, setRenderAudioButton] = useState<boolean>(false);
-  console.log(response);
-  console.log(response.length);
 
+  async function onGetAudio(text: string, language: string) {
+    const audio = await api.post('/audio', {
+      text,
+      language
 
-  if (response.length === 50) {
+    })
+    console.log(audio);
 
   }
 
@@ -28,7 +38,7 @@ export const ResponseData = () => {
       <section className=" flex flex-col justify-center max-w-6xl overflow-y-auto overscroll-none text-white gap-4 text-2xl">
         <Typewriter
           options={{
-            delay: 25
+            delay: speed
           }}
           onInit={(typewriter) => {
             typewriter.typeString(response)
@@ -68,7 +78,7 @@ export const ResponseData = () => {
         )}
         {renderAudioButton && (
           <div className="flex animate-fade-right pt-4">
-            <Button>
+            <Button onClick={() => onGetAudio(response, to)}>
               Convert to audio format
             </Button>
           </div>
