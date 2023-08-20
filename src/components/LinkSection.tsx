@@ -37,7 +37,7 @@ export const LinkSection = () => {
           size="sm"
         >
           <Input onChange={(event) => setInput(event.target.value)} id="input-demo" placeholder="Your link" />
-          <Button type='submit' className='w-full transition-all' >
+          <Button type='submit' className='w-full transition-all enabled:cursor-default enabled:opacity-100 disabled: cursor-not-allowed disabled:opacity-75' disabled={loading} >
             {!loading ? (
               'Submit'
             ) : (

@@ -9,6 +9,8 @@ import { Tooltip as ReactTooltip } from "react-tooltip";
 import { Button } from "./Button";
 import { useLength } from "@/hooks/useLength";
 import { api } from "@/lib/axios";
+import { useDecodingAudio } from "@/hooks/useDecodingAudio";
+import { log } from "console";
 
 
 
@@ -17,21 +19,18 @@ export const ResponseData = () => {
   const from = 'pt';
   const to = 'en'
 
-  const { response } = useContext(InputContext);
+  const { response, onGetAudio } = useContext(InputContext);
+
   const speed = useLength();
+  const audio = useDecodingAudio();
+  console.log(audio);
+
+
 
   const [finishedTyping, setFinishedTyping] = useState<boolean>(false);
   const [renderAudioButton, setRenderAudioButton] = useState<boolean>(false);
 
-  async function onGetAudio(text: string, language: string) {
-    const audio = await api.post('/audio', {
-      text,
-      language
 
-    })
-    console.log(audio);
-
-  }
 
   return (
     <main className=" flex flex-col justify-center items-center h-full w-full -translate-y-16">
@@ -81,6 +80,13 @@ export const ResponseData = () => {
             <Button onClick={() => onGetAudio(response, to)}>
               Convert to audio format
             </Button>
+          </div>
+        )}
+        {audio && (
+          <div>
+            <audio controls>
+              <source src={audio} type="audio/wav" />
+            </audio>
           </div>
         )}
       </section>

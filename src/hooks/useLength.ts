@@ -17,7 +17,7 @@ export const useLength = () => {
     speed = 25;
   }
   if (responseLength > 75) {
-    speed = 12.5;
+    speed = 5;
   }
 
   return speed
