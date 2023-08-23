@@ -8,28 +8,21 @@ import { Files } from 'lucide-react';
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import { Button } from "./Button";
 import { useLength } from "@/hooks/useLength";
-import { api } from "@/lib/axios";
 import { useDecodingAudio } from "@/hooks/useDecodingAudio";
-import { log } from "console";
 
 
 
 export const ResponseData = () => {
 
-  const from = 'pt';
   const to = 'en'
 
-  const { response, onGetAudio } = useContext(InputContext);
+  const { response, onHandleGetAudio, urlAudioResponse, AudioResponse } = useContext(InputContext);
 
   const speed = useLength();
-  const audio = useDecodingAudio();
-  console.log(audio);
-
-
+  // const audio = useDecodingAudio();
 
   const [finishedTyping, setFinishedTyping] = useState<boolean>(false);
   const [renderAudioButton, setRenderAudioButton] = useState<boolean>(false);
-
 
 
   return (
@@ -77,15 +70,15 @@ export const ResponseData = () => {
         )}
         {renderAudioButton && (
           <div className="flex animate-fade-right pt-4">
-            <Button onClick={() => onGetAudio(response, to)}>
+            <Button onClick={() => onHandleGetAudio(response, to)}>
               Convert to audio format
             </Button>
           </div>
         )}
-        {audio && (
+        {urlAudioResponse && (
           <div>
             <audio controls>
-              <source src={audio} type="audio/wav" />
+              <source src={urlAudioResponse} type="audio/x-wav" />
             </audio>
           </div>
         )}

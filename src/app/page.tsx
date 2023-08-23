@@ -2,9 +2,9 @@
 import { InputContext } from '@/contexts/inputContext'
 import { useContext, useState } from 'react'
 import Image from 'next/image'
+import Svg from '../../assets/mega-creator.svg'
 
 import { Button, LinkSection, UploadSection, ResponseData, Loading } from '@/components'
-import Svg from '../../assets/mega-creator.svg'
 
 import './globals.css'
 
