@@ -57,14 +57,13 @@ export function InputProvider({ children }: InputProviderProps) {
     const audio = await api.post('/audio', {
       text,
       language
+    }, {
+      responseType: 'arraybuffer',
     })
 
-    console.log(audio);
 
     setAudioReponse(audio.data);
     const decodedAudio = decodingAudio();
-    console.log(decodedAudio);
-
     setUrlAudioReponse(decodedAudio);
 
   }

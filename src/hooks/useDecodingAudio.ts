@@ -6,8 +6,7 @@ import { useContext, useState } from 'react'
 export const useDecodingAudio = () => {
   const { urlAudioResponse } = useContext(InputContext)
 
-  const decodedAudio = atob(urlAudioResponse);
-  const audioBlob = new Blob([decodedAudio], { type: 'audio/x-wav' });
+  const audioBlob = new Blob([urlAudioResponse], { type: 'audio/x-wav' });
   const audio = URL.createObjectURL(audioBlob);
 
   return audio;
