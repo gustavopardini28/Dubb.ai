@@ -16,13 +16,16 @@ export const ResponseData = () => {
 
   const to = 'en'
 
-  const { response, onHandleGetAudio, urlAudioResponse, AudioResponse } = useContext(InputContext);
+  const { response, onHandleGetAudio, urlAudioResponse } = useContext(InputContext);
 
   const speed = useLength();
   // const audio = useDecodingAudio();
 
   const [finishedTyping, setFinishedTyping] = useState<boolean>(false);
   const [renderAudioButton, setRenderAudioButton] = useState<boolean>(false);
+
+  console.log(urlAudioResponse);
+
 
 
   return (
@@ -77,9 +80,7 @@ export const ResponseData = () => {
         )}
         {urlAudioResponse && (
           <div>
-            <audio controls>
-              <source src={urlAudioResponse} type="audio/x-wav" />
-            </audio>
+            <audio src={urlAudioResponse} controls />
           </div>
         )}
       </section>

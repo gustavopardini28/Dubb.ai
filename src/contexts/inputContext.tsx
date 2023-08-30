@@ -27,10 +27,9 @@ export function InputProvider({ children }: InputProviderProps) {
   const [urlAudioResponse, setUrlAudioReponse] = useState<string>('');
 
 
-  const decodingAudio = () => {
+  const decodingAudio = (audioData: any) => {
 
-    const decodedAudio = atob(AudioResponse);
-    const audioBlob = new Blob([decodedAudio], { type: 'audio/x-wav' });
+    const audioBlob = new Blob([audioData]);
     const audio = URL.createObjectURL(audioBlob);
 
     return audio;
@@ -62,8 +61,10 @@ export function InputProvider({ children }: InputProviderProps) {
     })
 
 
-    setAudioReponse(audio.data);
-    const decodedAudio = decodingAudio();
+
+    const decodedAudio = decodingAudio(audio.data);
+    console.log(decodedAudio);
+
     setUrlAudioReponse(decodedAudio);
 
   }
